@@ -5612,7 +5612,7 @@
 											"top": 582,
 											"width": 372.48046875,
 											"height": 13,
-											"text": "+idProductos: ArrayList<int>",
+											"text": "+idProducto: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5629,7 +5629,7 @@
 											"top": 597,
 											"width": 372.48046875,
 											"height": 13,
-											"text": "+cantidades: ArrayList<int>",
+											"text": "+cantidad: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5800,7 +5800,7 @@
 											"top": 725,
 											"width": 372.48046875,
 											"height": 13,
-											"text": "+getProductos(): ArrayList<int>",
+											"text": "+getProducto(): int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5817,7 +5817,7 @@
 											"top": 740,
 											"width": 372.48046875,
 											"height": 13,
-											"text": "+setProductos(ArrayList_int): void",
+											"text": "+setProducto(int): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5834,7 +5834,7 @@
 											"top": 755,
 											"width": 372.48046875,
 											"height": 13,
-											"text": "+getCantidades(): ArrayList<int>",
+											"text": "+getCantidad(): int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5851,7 +5851,7 @@
 											"top": 770,
 											"width": 372.48046875,
 											"height": 13,
-											"text": "+setCantidades(ArrayList_int): void",
+											"text": "+setCantidad(int): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10865,8 +10865,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFp8NLfkne6Dw="
 							},
-							"name": "idProductos",
-							"type": "ArrayList<int>"
+							"name": "idProducto",
+							"type": "int"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10874,8 +10874,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFp8NLfkne6Dw="
 							},
-							"name": "cantidades",
-							"type": "ArrayList<int>"
+							"name": "cantidad",
+							"type": "int"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10994,7 +10994,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGFp8NLfkne6Dw="
 							},
-							"name": "getProductos",
+							"name": "getProducto",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -11002,7 +11002,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGFp8bpW0pxXxo="
 									},
-									"type": "ArrayList<int>",
+									"type": "int",
 									"direction": "return"
 								}
 							]
@@ -11013,7 +11013,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGFp8NLfkne6Dw="
 							},
-							"name": "setProductos",
+							"name": "setProducto",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -11021,8 +11021,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGFp8b1wEp3gv0="
 									},
-									"name": "ArrayList_int",
-									"type": ""
+									"name": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11041,7 +11040,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGFp8NLfkne6Dw="
 							},
-							"name": "getCantidades",
+							"name": "getCantidad",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -11049,7 +11048,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGFp8cDV0p98wU="
 									},
-									"type": "ArrayList<int>",
+									"type": "int",
 									"direction": "return"
 								}
 							]
@@ -11060,7 +11059,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGFp8NLfkne6Dw="
 							},
-							"name": "setCantidades",
+							"name": "setCantidad",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -11068,8 +11067,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGFp8cNSkqDXyk="
 									},
-									"name": "ArrayList_int",
-									"type": ""
+									"name": "int"
 								},
 								{
 									"_type": "UMLParameter",
