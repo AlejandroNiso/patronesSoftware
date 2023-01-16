@@ -12,13 +12,13 @@ import java.sql.*;
 public class Almacen {
 
     public static void main(String[] args) throws SQLException {
-        BaseDatos bd = BaseDatos.getInstancia();
-        //String query = "INSERT INTO public.\"Producto\" (IdProducto, Nombre, Precio, Descripcion) VALUES ('1','Lapiz','3','Normal')" ;
-        //bd.lanzarQuery(query);
+        /**String query = "INSERT INTO public.\"Producto\" (IdProducto, Nombre, Precio, Descripcion) VALUES ('1','Lapiz','3','Normal')" ;
+        bd.lanzarQuery(query);
         String query = " SELECT * FROM public.\"Producto\" WHERE  idproducto=1" ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query);
         resultado.next();
-        System.out.println(resultado.getInt(3));
+        System.out.println(resultado.getInt(3));*/
+        MenuInicial menu= new MenuInicial();
     }
 }

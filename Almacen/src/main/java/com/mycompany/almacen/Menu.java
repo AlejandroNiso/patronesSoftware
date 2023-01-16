@@ -8,6 +8,9 @@ package com.mycompany.almacen;
  *
  * @author maria
  */
-public class MenúInicial {
+public class Menu {
     
+    public Menu(){
+        System.out.println("Menu");
+    }
 }

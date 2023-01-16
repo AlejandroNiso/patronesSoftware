@@ -18,7 +18,7 @@ public class MenúGestiónEntradas {
                 + entrada.getIdProducto() +"','"+ entrada.getCantidad() +"','" + entrada.getIdPersona() +"','" + entrada.getFecha() +"')" ;
         bd.lanzarQuery(query);
         
-        //Actualizar existencias
+        //Actualizar o insertar en la base de datos existencias
         String query2 = " SELECT cantidad FROM public.\"Existencias\" WHERE  idproducto=" + entrada.getIdProducto() ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query2);

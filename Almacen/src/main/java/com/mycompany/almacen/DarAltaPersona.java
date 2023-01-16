@@ -4,6 +4,10 @@
  */
 package com.mycompany.almacen;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author maria
@@ -20,17 +24,39 @@ public class DarAltaPersona {
         }
     }
     
-    public void insertarCliente (Cliente cliente){
+    public void insertarCliente (Cliente cliente) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
-        String query = "INSERT INTO public.\"Cliente\" (IdCliente, Nombre, Email, Telefono, Direccion) VALUES ('" + cliente.getIdPersona() + "',' " 
+        
+        String query2 = " SELECT * FROM public.\"Cliente\" WHERE  idcliente=" + cliente.getIdPersona() ;
+        Statement consulta = bd.prepararConsulta();
+        ResultSet resultado = bd.lanzarQuery(consulta, query2);
+        
+        if (resultado.next()==false){
+            //Insertar cliente en la base de datos
+            String query = "INSERT INTO public.\"Cliente\" (IdCliente, Nombre, Email, Telefono, Direccion) VALUES ('" + cliente.getIdPersona() + "',' " 
                 + cliente.getNombre() +"','"+ cliente.getEmail() +"','" + cliente.getTelefono() +"','" + cliente.getDireccion() +"')" ;
-        bd.lanzarQuery(query);
+            bd.lanzarQuery(query);
+        }
+        else{
+            System.out.println("No puede introducirse el cliente, ya existe el id");
+        }
     }
     
-    public void insertarProveedor (Proveedor proveedor){
+    public void insertarProveedor (Proveedor proveedor) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
-        String query = "INSERT INTO public.\"Proveedor\" (IdProveedor, Nombre, Email, Telefono, Direccion) VALUES ('" + proveedor.getIdPersona() + "',' " 
+                
+        String query2 = " SELECT * FROM public.\"Proveedor\" WHERE  idproveedor=" + proveedor.getIdPersona() ;
+        Statement consulta = bd.prepararConsulta();
+        ResultSet resultado = bd.lanzarQuery(consulta, query2);
+        
+        if (resultado.next()==false){
+            //Introducir el proveedor en la base de datos
+            String query = "INSERT INTO public.\"Proveedor\" (IdProveedor, Nombre, Email, Telefono, Direccion) VALUES ('" + proveedor.getIdPersona() + "',' " 
                 + proveedor.getNombre() +"','"+ proveedor.getEmail() +"','" + proveedor.getTelefono() +"','" + proveedor.getDireccion() +"')" ;
-        bd.lanzarQuery(query);
+            bd.lanzarQuery(query);
+        }
+        else{
+            System.out.println("No puede introducirse el proveedor, ya existe el id");
+        }
     }
 }
