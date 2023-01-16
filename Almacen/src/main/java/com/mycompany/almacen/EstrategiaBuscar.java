@@ -4,10 +4,12 @@
  */
 package com.mycompany.almacen;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author maria
  */
 public interface EstrategiaBuscar {
-    
+        public void buscar (String tabla, String buscador) throws SQLException;
 }

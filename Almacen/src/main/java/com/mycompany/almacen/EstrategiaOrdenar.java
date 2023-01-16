@@ -4,10 +4,12 @@
  */
 package com.mycompany.almacen;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author maria
  */
-public interface EstrategiaOrdenar {
-    
+public interface EstrategiaOrdenar{
+    public void ordenar (String tabla) throws SQLException;
 }

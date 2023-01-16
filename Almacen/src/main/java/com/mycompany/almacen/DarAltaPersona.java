@@ -19,4 +19,18 @@ public class DarAltaPersona {
             return new Proveedor (idPersona, nombre, email, telefono, direccion);
         }
     }
+    
+    public void insertarCliente (Cliente cliente){
+        BaseDatos bd = BaseDatos.getInstancia();
+        String query = "INSERT INTO public.\"Cliente\" (IdCliente, Nombre, Email, Telefono, Direccion) VALUES ('" + cliente.getIdPersona() + "',' " 
+                + cliente.getNombre() +"','"+ cliente.getEmail() +"','" + cliente.getTelefono() +"','" + cliente.getDireccion() +"')" ;
+        bd.lanzarQuery(query);
+    }
+    
+    public void insertarProveedor (Proveedor proveedor){
+        BaseDatos bd = BaseDatos.getInstancia();
+        String query = "INSERT INTO public.\"Proveedor\" (IdProveedor, Nombre, Email, Telefono, Direccion) VALUES ('" + proveedor.getIdPersona() + "',' " 
+                + proveedor.getNombre() +"','"+ proveedor.getEmail() +"','" + proveedor.getTelefono() +"','" + proveedor.getDireccion() +"')" ;
+        bd.lanzarQuery(query);
+    }
 }

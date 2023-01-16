@@ -10,8 +10,9 @@ package com.mycompany.almacen;
  */
 public class ProductoNormal extends Producto{
 
-    public ProductoNormal() {
+    public ProductoNormal(int idProducto, String nombre, int precio, String descripcion) {
+        super (idProducto, nombre, precio, descripcion) ;
         this.setDescripcion("Normal");
     }
-    
+
 }

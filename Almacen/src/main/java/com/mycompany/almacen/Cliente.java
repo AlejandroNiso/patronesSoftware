@@ -11,8 +11,7 @@ package com.mycompany.almacen;
 public class Cliente extends Persona{
     
     public Cliente(int idPersona, String nombre, String email, int telefono, String direccion) {
-        super(idPersona,nombre,email,telefono,direccion);
-        
+        super(idPersona,nombre,email,telefono,direccion);   
     }
     
 }

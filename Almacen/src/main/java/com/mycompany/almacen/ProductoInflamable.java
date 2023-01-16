@@ -10,7 +10,8 @@ package com.mycompany.almacen;
  */
 public class ProductoInflamable extends Producto{
 
-    public ProductoInflamable() {
+    public ProductoInflamable(int idProducto, String nombre, int precio, String descripcion) {
+        super (idProducto, nombre, precio, descripcion) ;
         this.setDescripcion("Inflamable");
     }
     

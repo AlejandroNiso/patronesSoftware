@@ -19,7 +19,7 @@ import java.sql.*;
 public class BaseDatos {
 
     // Instancia única de la clase GestorBaseDatos
-    private static BaseDatos instanciaUnica;
+    private static BaseDatos instanciaUnica = null;
     
     
     // Atributos de la clase
@@ -39,8 +39,8 @@ public class BaseDatos {
      */
     private void abrirConexion() {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conexion = DriverManager.getConnection("jdbc:derby://localhost:1527/BBDDPatrones");
+            Class.forName("org.postgresql.Driver");
+            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Almacen", "postgres", "maria");
         } catch (Exception e) {
             e.printStackTrace();
         }

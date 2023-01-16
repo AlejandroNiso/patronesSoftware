@@ -10,7 +10,8 @@ package com.mycompany.almacen;
  */
 public class ProductoFragil extends Producto {
 
-    public ProductoFragil() {
+    public ProductoFragil(int idProducto, String nombre, int precio, String descripcion) {
+        super (idProducto, nombre, precio, descripcion) ;
         this.setDescripcion("Fragil");
     }
     

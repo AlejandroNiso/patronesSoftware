@@ -4499,7 +4499,7 @@
 											"font": "Arial;13;1",
 											"left": 389,
 											"top": 927,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "Producto"
 										},
@@ -4534,7 +4534,7 @@
 									"font": "Arial;13;0",
 									"left": 384,
 									"top": 920,
-									"width": 176.537109375,
+									"width": 195.33251953125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGFp77AiUj/ZfA="
@@ -4571,7 +4571,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 950,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+id: int",
 											"horizontalAlignment": 0
@@ -4588,7 +4588,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 965,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+nombre: String",
 											"horizontalAlignment": 0
@@ -4605,7 +4605,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 980,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+precio: int",
 											"horizontalAlignment": 0
@@ -4622,7 +4622,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 995,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+descripcion: String",
 											"horizontalAlignment": 0
@@ -4631,7 +4631,7 @@
 									"font": "Arial;13;0",
 									"left": 384,
 									"top": 945,
-									"width": 176.537109375,
+									"width": 195.33251953125,
 									"height": 68
 								},
 								{
@@ -4656,9 +4656,9 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1018,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
-											"text": "+Producto(int, String, int)",
+											"text": "+Producto(int, String, int, String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4673,7 +4673,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1033,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+getId(): int",
 											"horizontalAlignment": 0
@@ -4690,7 +4690,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1048,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+setId(int): void",
 											"horizontalAlignment": 0
@@ -4707,7 +4707,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1063,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+getNombre(): String",
 											"horizontalAlignment": 0
@@ -4724,7 +4724,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1078,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+setNombre(String): void",
 											"horizontalAlignment": 0
@@ -4741,7 +4741,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1093,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+getPrecio(): int",
 											"horizontalAlignment": 0
@@ -4758,7 +4758,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1108,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+setPrecio(int): void",
 											"horizontalAlignment": 0
@@ -4775,7 +4775,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1123,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+getDescripción(): String",
 											"horizontalAlignment": 0
@@ -4792,7 +4792,7 @@
 											"font": "Arial;13;0",
 											"left": 389,
 											"top": 1138,
-											"width": 166.537109375,
+											"width": 185.33251953125,
 											"height": 13,
 											"text": "+setDescripción(String): void",
 											"horizontalAlignment": 0
@@ -4801,7 +4801,7 @@
 									"font": "Arial;13;0",
 									"left": 384,
 									"top": 1013,
-									"width": 176.537109375,
+									"width": 195.33251953125,
 									"height": 143
 								},
 								{
@@ -4841,7 +4841,7 @@
 							"containerChangeable": true,
 							"left": 384,
 							"top": 920,
-							"width": 176.537109375,
+							"width": 195.33251953125,
 							"height": 236,
 							"nameCompartment": {
 								"$ref": "AAAAAAGFp77AiUj+N88="
@@ -9055,7 +9055,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGFppBpxUTpZTY="
 									},
-									"name": "int"
+									"name": "int",
+									"type": ""
 								}
 							]
 						},
@@ -10367,8 +10368,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGFp7+ecUk77jo="
 									},
-									"name": "int",
-									"type": ""
+									"name": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10376,8 +10376,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGFp7+ecUk77jo="
 									},
-									"name": "String",
-									"type": ""
+									"name": "String"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10385,7 +10384,15 @@
 									"_parent": {
 										"$ref": "AAAAAAGFp7+ecUk77jo="
 									},
-									"name": "int",
+									"name": "int"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGFuyJ13M0oH8I=",
+									"_parent": {
+										"$ref": "AAAAAAGFp7+ecUk77jo="
+									},
+									"name": "String",
 									"type": ""
 								}
 							]
