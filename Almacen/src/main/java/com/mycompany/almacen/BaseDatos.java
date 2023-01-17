@@ -40,7 +40,7 @@ public class BaseDatos {
     private void abrirConexion() {
         try {
             Class.forName("org.postgresql.Driver");
-            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Almacen", "postgres", "admin");
+            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Almacen", "postgres", "maria");
         } catch (Exception e) {
             e.printStackTrace();
         }

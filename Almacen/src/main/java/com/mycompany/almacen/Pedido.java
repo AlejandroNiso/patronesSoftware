@@ -15,7 +15,7 @@ public class Pedido extends ConjuntoProductos{
     private int idPedido ;
     private boolean completado ;
     
-    public Pedido(int idProducto, int cantidad, int idPersona, String fecha, int idPedido, boolean completado) {
+    public Pedido(int idPedido,int idProducto, int cantidad, int idPersona, boolean completado, String fecha) {
         super(idProducto, cantidad, idPersona, fecha);
         this.idPedido = idPedido ;
         this.completado = completado ;

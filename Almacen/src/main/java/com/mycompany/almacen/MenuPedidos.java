@@ -4,9 +4,13 @@
  */
 package com.mycompany.almacen;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,21 +34,280 @@ public class MenuPedidos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label4 = new java.awt.Label();
+        label5 = new java.awt.Label();
+        button1 = new java.awt.Button();
+        textField1 = new java.awt.TextField();
+        button10 = new java.awt.Button();
+        textField2 = new java.awt.TextField();
+        textField3 = new java.awt.TextField();
+        textField4 = new java.awt.TextField();
+        textField5 = new java.awt.TextField();
+        label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
+        label3 = new java.awt.Label();
+        jTextField1 = new javax.swing.JTextField();
+        label6 = new java.awt.Label();
+        jButton1 = new javax.swing.JButton();
+        label7 = new java.awt.Label();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        label4.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label4.setForeground(new java.awt.Color(51, 51, 51));
+        label4.setText("IdCliente");
+
+        label5.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label5.setForeground(new java.awt.Color(51, 51, 51));
+        label5.setText("Fecha");
+
+        button1.setBackground(new java.awt.Color(204, 255, 255));
+        button1.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        button1.setForeground(new java.awt.Color(51, 51, 51));
+        button1.setLabel("Insertar");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
+        textField1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField1.setForeground(new java.awt.Color(51, 51, 51));
+        textField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField1ActionPerformed(evt);
+            }
+        });
+
+        button10.setBackground(new java.awt.Color(255, 255, 255));
+        button10.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        button10.setForeground(new java.awt.Color(51, 51, 51));
+        button10.setLabel("Menú");
+        button10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button10ActionPerformed(evt);
+            }
+        });
+
+        textField2.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField2.setForeground(new java.awt.Color(51, 51, 51));
+        textField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField2ActionPerformed(evt);
+            }
+        });
+
+        textField3.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField3.setForeground(new java.awt.Color(51, 51, 51));
+        textField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField3ActionPerformed(evt);
+            }
+        });
+
+        textField4.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField4.setForeground(new java.awt.Color(51, 51, 51));
+        textField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField4ActionPerformed(evt);
+            }
+        });
+
+        textField5.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField5.setForeground(new java.awt.Color(51, 51, 51));
+        textField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField5ActionPerformed(evt);
+            }
+        });
+
+        label1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label1.setForeground(new java.awt.Color(51, 51, 51));
+        label1.setText("IdPedido");
+
+        label2.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label2.setForeground(new java.awt.Color(51, 51, 51));
+        label2.setText("IdProducto");
+
+        label3.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label3.setForeground(new java.awt.Color(51, 51, 51));
+        label3.setText("Cantidad");
+
+        jTextField1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        label6.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label6.setForeground(new java.awt.Color(51, 51, 51));
+        label6.setText("IdPedido");
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 204));
+        jButton1.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setText("Completar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        label7.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        label7.setForeground(new java.awt.Color(51, 51, 51));
+        label7.setText("PEDIDOS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textField5, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextField1)
+                                .addComponent(textField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 158, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(256, 256, 256))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+        if(!textField1.getText().isEmpty() && !textField2.getText().isEmpty() && !textField3.getText().isEmpty() && !textField4.getText().isEmpty() && !textField5.getText().isEmpty()){
+
+            Pedido pedido = new Pedido(Integer.parseInt(textField1.getText()),Integer.parseInt(textField2.getText()),Integer.parseInt(textField3.getText()),
+                Integer.parseInt(textField4.getText()),false,textField5.getText());
+            try {
+                try {
+                    insertarPedido(pedido);
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuPedidos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(MenuPedidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
+        }
+
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void button10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button10ActionPerformed
+        // TODO add your handling code here:
+        MenuPrincipal menu =new MenuPrincipal();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_button10ActionPerformed
+
+    private void textField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField4ActionPerformed
+
+    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField1ActionPerformed
+
+    private void textField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(!jTextField1.getText().isEmpty()){
+            try {
+                completarPedido(Integer.parseInt(jTextField1.getText())) ;
+            } catch (SQLException ex) {
+                Logger.getLogger(MenuPedidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe rellenar el campo");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField3ActionPerformed
+
+    private void textField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,35 +345,104 @@ public class MenuPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button button1;
+    private java.awt.Button button10;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField jTextField1;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
+    private java.awt.Label label4;
+    private java.awt.Label label5;
+    private java.awt.Label label6;
+    private java.awt.Label label7;
+    private java.awt.TextField textField1;
+    private java.awt.TextField textField2;
+    private java.awt.TextField textField3;
+    private java.awt.TextField textField4;
+    private java.awt.TextField textField5;
     // End of variables declaration//GEN-END:variables
-    public void insertarPedido (Pedido pedido){
+    public void insertarPedido (Pedido pedido) throws SQLException, IOException{
         BaseDatos bd = BaseDatos.getInstancia();
-        String query = "INSERT INTO public.\"Pedido\" (IdPedido, IdProducto, Cantidad, IdCliente, Fecha, Completado) VALUES ('" + pedido.getIdPedido() + "',' " 
-                + pedido.getIdProducto() +"','"+ pedido.getCantidad() +"','" + pedido.getIdPersona() +"','" + pedido.getFecha() +"','" + pedido.isCompletado()+"')" ;
-        bd.lanzarQuery(query);
+        
+        String query3 = " SELECT * FROM public.\"Producto\" WHERE  idproducto=" + pedido.getIdProducto() ;
+        Statement consulta2 = bd.prepararConsulta();
+        ResultSet resultado2 = bd.lanzarQuery(consulta2, query3);
+        
+        String query4 = " SELECT * FROM public.\"Cliente\" WHERE  idcliente=" + pedido.getIdPersona() ;
+        Statement consulta3 = bd.prepararConsulta();
+        ResultSet resultado3 = bd.lanzarQuery(consulta3, query4);
+        
+        String query5 = " SELECT * FROM public.\"Pedido\" WHERE  idpedido=" + pedido.getIdPedido() ;
+        Statement consulta4 = bd.prepararConsulta();
+        ResultSet resultado4 = bd.lanzarQuery(consulta4, query5);
+        
+        if (resultado4.next()==false){
+            if(resultado2.next()){
+                if(resultado3.next()){
+                    String query = "INSERT INTO public.\"Pedido\" (IdPedido, IdProducto, Cantidad, IdCliente, Fecha, Completado) VALUES ('" + pedido.getIdPedido() + "',' "
+                            + pedido.getIdProducto() + "','" + pedido.getCantidad() + "','" + pedido.getIdPersona() + "','" + pedido.getFecha() + "','" + pedido.isCompletado() + "')";
+                    bd.lanzarQuery(query);
+                    
+                    Recuerdo recuerdo = new Recuerdo();
+                    String nuevaLinea = "PEDIDO: " + pedido.getIdPedido() + ", " + pedido.getIdProducto() + ", " + pedido.getCantidad() 
+                            + ", " + pedido.getIdPersona() + ", " + pedido.getFecha() ;
+                    recuerdo.setRecuerdo(nuevaLinea);
+                    
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+                }else {
+                    JOptionPane.showMessageDialog(this, "No existe el cliente, tiene que darlo de alta");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "No existe el producto, tiene que darlo de alta");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Ya existe el id del pedido, introducir otro");
+        }
     }
     
-    public void completarPedido (Pedido pedido) throws SQLException{
+    public void completarPedido (int idPedido) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
-        String query2 = " SELECT cantidad FROM public.\"Existencias\" WHERE  idproducto=" + pedido.getIdProducto() ;
-        Statement consulta = bd.prepararConsulta();
-        ResultSet resultado = bd.lanzarQuery(consulta, query2);
         
-        resultado.next();
-        int cantidadActual = resultado.getInt(2) ;
-        int cantidadFinal = cantidadActual - pedido.getCantidad() ;
-        if (cantidadFinal >= 0){
-            //Eliminar unidades de existencias
-            String queryUpdate = "UPDATE public.\"Existencias\" SET cantidad = " + cantidadFinal + "WHERE idproducto = " + pedido.getIdProducto() ;
-            bd.lanzarQuery(queryUpdate);
-            
-            //Poner Completado a true
-            String queryUpdate2 = "UPDATE public.\"Pedido\" SET completado = true WHERE idpedido = " + pedido.getIdPedido() ;
-            bd.lanzarQuery(queryUpdate2);
+        String query3 = " SELECT * FROM public.\"Pedido\" WHERE  idpedido=" + idPedido ;
+        Statement consulta2 = bd.prepararConsulta();
+        ResultSet resultado2 = bd.lanzarQuery(consulta2, query3);
+        if (resultado2.next()){
+            if (resultado2.getBoolean(5)==false){
+                String query2 = " SELECT cantidad FROM public.\"Existencias\" WHERE  idproducto=" + resultado2.getString(2);
+                Statement consulta = bd.prepararConsulta();
+                ResultSet resultado = bd.lanzarQuery(consulta, query2);
+
+                if (resultado.next()) {
+                    int cantidadActual = resultado.getInt(1);
+                    int cantidadFinal = cantidadActual - Integer.parseInt(resultado2.getString(3));
+                    if (cantidadFinal >= 0) {
+                        //Eliminar unidades de existencias
+                        String queryUpdate = "UPDATE public.\"Existencias\" SET cantidad = " + cantidadFinal + " WHERE idproducto = " + resultado2.getString(2);
+                        bd.lanzarQuery(queryUpdate);
+
+                        //Poner Completado a true
+                        String queryUpdate2 = "UPDATE public.\"Pedido\" SET completado = true WHERE idpedido = " + idPedido;
+                        bd.lanzarQuery(queryUpdate2);
+
+                        MenuPrincipal menu = new MenuPrincipal();
+                        menu.setVisible(true);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No hay existencias suficientes para completar el pedido");
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "El pedido ya está completado");
+                
+            }
         }
         else{
-            System.out.println("No se puede completar el pedido");
+            JOptionPane.showMessageDialog(this, "No existe el id del pedido, introduzca uno valido");
         }
+        
     }
 
 }

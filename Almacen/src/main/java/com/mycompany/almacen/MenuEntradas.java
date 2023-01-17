@@ -4,6 +4,7 @@
  */
 package com.mycompany.almacen;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -48,25 +49,53 @@ public class MenuEntradas extends javax.swing.JFrame {
         label5 = new java.awt.Label();
         button1 = new java.awt.Button();
         button10 = new java.awt.Button();
+        label6 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        textField1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField1.setForeground(new java.awt.Color(51, 51, 51));
+
+        textField2.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField2.setForeground(new java.awt.Color(51, 51, 51));
+
+        textField3.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField3.setForeground(new java.awt.Color(51, 51, 51));
+
+        textField4.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField4.setForeground(new java.awt.Color(51, 51, 51));
         textField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField4ActionPerformed(evt);
             }
         });
 
+        textField5.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        textField5.setForeground(new java.awt.Color(51, 51, 51));
+
+        label1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label1.setForeground(new java.awt.Color(51, 51, 51));
         label1.setText("IdEntrada");
 
+        label2.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label2.setForeground(new java.awt.Color(51, 51, 51));
         label2.setText("IdProducto");
 
+        label3.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label3.setForeground(new java.awt.Color(51, 51, 51));
         label3.setText("Cantidad");
 
+        label4.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label4.setForeground(new java.awt.Color(51, 51, 51));
         label4.setText("IdProveedor");
 
+        label5.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        label5.setForeground(new java.awt.Color(51, 51, 51));
         label5.setText("Fecha");
 
+        button1.setBackground(new java.awt.Color(204, 255, 204));
+        button1.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        button1.setForeground(new java.awt.Color(51, 51, 51));
         button1.setLabel("Insertar");
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +103,9 @@ public class MenuEntradas extends javax.swing.JFrame {
             }
         });
 
+        button10.setBackground(new java.awt.Color(255, 255, 255));
+        button10.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        button10.setForeground(new java.awt.Color(51, 51, 51));
         button10.setLabel("Menú");
         button10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,42 +113,54 @@ public class MenuEntradas extends javax.swing.JFrame {
             }
         });
 
+        label6.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        label6.setForeground(new java.awt.Color(51, 51, 51));
+        label6.setText("ENTRADAS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textField5, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                    .addComponent(textField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(382, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(367, 367, 367))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textField5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
                 .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(2, 2, 2)
+                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -139,9 +183,9 @@ public class MenuEntradas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,7 +210,11 @@ public class MenuEntradas extends javax.swing.JFrame {
             Entrada entrada = new Entrada(Integer.parseInt(textField1.getText()),Integer.parseInt(textField2.getText()),Integer.parseInt(textField3.getText()),
                     Integer.parseInt(textField4.getText()),textField5.getText());
             try {
-                insertarEntrada(entrada);
+                try {
+                    insertarEntrada(entrada);
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuEntradas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(MenuEntradas.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -214,16 +262,12 @@ public class MenuEntradas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private java.awt.Button button10;
-    private java.awt.Button button5;
-    private java.awt.Button button6;
-    private java.awt.Button button7;
-    private java.awt.Button button8;
-    private java.awt.Button button9;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
+    private java.awt.Label label6;
     private java.awt.TextField textField1;
     private java.awt.TextField textField2;
     private java.awt.TextField textField3;
@@ -231,7 +275,7 @@ public class MenuEntradas extends javax.swing.JFrame {
     private java.awt.TextField textField5;
     // End of variables declaration//GEN-END:variables
 
-public void insertarEntrada (Entrada entrada) throws SQLException{
+public void insertarEntrada (Entrada entrada) throws SQLException, IOException{
         BaseDatos bd = BaseDatos.getInstancia();   
         String query3 = " SELECT * FROM public.\"Producto\" WHERE  idproducto=" + entrada.getIdProducto() ;
         Statement consulta2 = bd.prepararConsulta();
@@ -240,37 +284,55 @@ public void insertarEntrada (Entrada entrada) throws SQLException{
         String query4 = " SELECT * FROM public.\"Proveedor\" WHERE  idproveedor=" + entrada.getIdPersona() ;
         Statement consulta3 = bd.prepararConsulta();
         ResultSet resultado3 = bd.lanzarQuery(consulta3, query4);
-        //Registrar entrada
         
-        if(resultado2.next()){
-            if(resultado3.next()){
-                String query = "INSERT INTO public.\"Entrada\" (IdEntrada, IdProducto, Cantidad, IdProveedor, Fecha) VALUES ('" + entrada.getIdEntrada() + "',' "
-                        + entrada.getIdProducto() + "','" + entrada.getCantidad() + "','" + entrada.getIdPersona() + "','" + entrada.getFecha() + "')";
-                bd.lanzarQuery(query);
+        String query5 = " SELECT * FROM public.\"Entrada\" WHERE  identrada=" + entrada.getIdEntrada() ;
+        Statement consulta4 = bd.prepararConsulta();
+        ResultSet resultado4 = bd.lanzarQuery(consulta4, query5);
+        //Registrar entrada
+        if(resultado4.next()==false){
+            if (resultado2.next()) {
+                if (resultado3.next()) {
+                    String query = "INSERT INTO public.\"Entrada\" (IdEntrada, IdProducto, Cantidad, IdProveedor, Fecha) VALUES ('" + entrada.getIdEntrada() + "',' "
+                            + entrada.getIdProducto() + "','" + entrada.getCantidad() + "','" + entrada.getIdPersona() + "','" + entrada.getFecha() + "')";
+                    bd.lanzarQuery(query);
 
-                //Actualizar o insertar en la base de datos existencias
-                String query2 = " SELECT cantidad FROM public.\"Existencias\" WHERE  idproducto=" + entrada.getIdProducto();
-                Statement consulta = bd.prepararConsulta();
-                ResultSet resultado = bd.lanzarQuery(consulta, query2);
+                    //Actualizar o insertar en la base de datos existencias
+                    String query2 = " SELECT cantidad FROM public.\"Existencias\" WHERE  idproducto=" + entrada.getIdProducto();
+                    Statement consulta = bd.prepararConsulta();
+                    ResultSet resultado = bd.lanzarQuery(consulta, query2);
 
-                if (resultado.next()) {
-                    //Actualizar
-                    int cantidadActual = resultado.getInt(2);
-                    int cantidadFinal = cantidadActual + entrada.getCantidad();
-                    String queryUpdate = "UPDATE public.\"Existencias\" SET cantidad = " + cantidadFinal + "WHERE idproducto = " + entrada.getIdProducto();
-                    bd.lanzarQuery(queryUpdate);
+                    if (resultado.next()) {
+                        //Actualizar
+                        int cantidadActual = resultado.getInt(1);
+                        int cantidadFinal = cantidadActual + entrada.getCantidad();
+                        String queryUpdate = "UPDATE public.\"Existencias\" SET cantidad = " + cantidadFinal + " WHERE idproducto = " + entrada.getIdProducto();
+                        bd.lanzarQuery(queryUpdate);
+                    } else {
+                        //Insertar
+                        String queryInsert = "INSERT INTO public.\"Existencias\" (IdProducto, Cantidad) VALUES ('" + entrada.getIdProducto() + "','" + entrada.getCantidad() + "')";
+                        bd.lanzarQuery(queryInsert);
+                    }
+                    
+                    Recuerdo recuerdo = new Recuerdo();
+                    String nuevaLinea = "ENTRADA: " + entrada.getIdEntrada() + ", " + entrada.getIdProducto() + ", " + entrada.getCantidad() 
+                            + ", " + entrada.getIdPersona() + ", " + entrada.getFecha() ;
+                    recuerdo.setRecuerdo(nuevaLinea);
+                    
+                    
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
                 } else {
-                    //Insertar
-                    String queryInsert = "INSERT INTO public.\"Existencias\" (IdProducto, Cantidad) VALUES ('" + entrada.getIdProducto() + "','" + entrada.getCantidad() + "')";
-                    bd.lanzarQuery(queryInsert);
+                    JOptionPane.showMessageDialog(this, "No existe el proovedor, tiene que darlo de alta");
                 }
-                
-            }else{
-                JOptionPane.showMessageDialog(this, "No existe el proovedor, tiene que darlo de alta");
+            } else {
+                JOptionPane.showMessageDialog(this, "No existe el producto, tiene que darlo de alta");
             }
         }else{
-            JOptionPane.showMessageDialog(this, "No existe el producto, tiene que darlo de alta");
+            JOptionPane.showMessageDialog(this, "No puede introducirse la entrada, ya existe el id");
         }
+        
         
     }
 

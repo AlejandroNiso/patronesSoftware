@@ -19,7 +19,7 @@ public class Almacen {
         ResultSet resultado = bd.lanzarQuery(consulta, query);
         resultado.next();
         System.out.println(resultado.getInt(3));*/
-        MenuPrincipal menu = new MenuPrincipal();
+        MenuInicio menu = new MenuInicio();
         menu.setVisible(true);
     }
 }
