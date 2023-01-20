@@ -11,5 +11,5 @@ import java.sql.SQLException;
  * @author maria
  */
 public interface RegistroUsuario {
-    public void insertarUsuario(String email, String telefono, String password) throws SQLException ;
+    public void insertarUsuario(Usuario usuario) throws SQLException ;
 }

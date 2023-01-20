@@ -10,8 +10,15 @@ package com.mycompany.almacen;
  */
 public class Usuario {
     private String email ;
-    private int telefono ;
+    private String telefono ;
     private String password ;
+
+    public Usuario(String email, String telefono, String password) {
+        this.email = email;
+        this.telefono = telefono;
+        this.password = password;
+    }
+    
 
     public String getEmail() {
         return email;
@@ -21,11 +28,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

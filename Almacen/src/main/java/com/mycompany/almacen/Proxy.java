@@ -146,7 +146,8 @@ public class Proxy extends javax.swing.JFrame implements RegistroUsuario {
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty() && !textField2.getText().isEmpty() && !textField3.getText().isEmpty()){
             try {
-                this.insertarUsuario(textField1.getText(), textField2.getText(), textField3.getText());
+                Usuario usuario = new Usuario(textField1.getText(), textField2.getText(), textField3.getText());
+                this.insertarUsuario(usuario);
             } catch (SQLException ex) {
                 Logger.getLogger(Proxy.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -216,17 +217,17 @@ public class Proxy extends javax.swing.JFrame implements RegistroUsuario {
     // End of variables declaration//GEN-END:variables
 
 
-    public void insertarUsuario(String email, String telefono, String password) throws SQLException{
+    public void insertarUsuario(Usuario usuario) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
         
-        String query2 = " SELECT * FROM public.\"Usuario\" WHERE  email='" + email + "'" ;
+        String query2 = " SELECT * FROM public.\"Usuario\" WHERE  email='" + usuario.getEmail() + "'" ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query2);
         
         if (resultado.next()==false){
             //Insertar el producto
-            String query = "INSERT INTO public.\"Usuario\" (Email, Password, Telefono) VALUES ('" + email + "',' " 
-                + password +"','"+ telefono +"')" ;
+            String query = "INSERT INTO public.\"Usuario\" (Email, Password, Telefono) VALUES ('" + usuario.getEmail() + "',' " 
+                + usuario.getPassword() +"','"+ usuario.getTelefono() +"')" ;
             bd.lanzarQuery(query);
             MenuInicio menu = new MenuInicio();
             menu.setVisible(true);
