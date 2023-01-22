@@ -9,13 +9,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * Realiza la ordenación en una determinada tabla de la base de datos por nombre
  * @author alexc
  */
 public class OrdenaNombre extends javax.swing.JFrame implements EstrategiaOrdenar {
     private static String tabla;
     /**
-     * Creates new form OrdenaNombre
+     * Constructor de OrdenaNombre
      */
     public OrdenaNombre(String Tabla) {
         initComponents();
@@ -88,6 +88,10 @@ public class OrdenaNombre extends javax.swing.JFrame implements EstrategiaOrdena
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -136,13 +140,20 @@ public class OrdenaNombre extends javax.swing.JFrame implements EstrategiaOrdena
     private java.awt.TextArea textArea2;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Método para realizar la ordenación de una determinada tabla de la base de datos por nombre
+     * @param tabla -> tabla a ordenar
+     */ 
+    
     public void ordenar(String tabla) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
+        
+        //Consulta que retorna todos los elementos de la tabla pasada como parámetro en orden ascendente
         String query = "SELECT * FROM public.\""+ tabla+"\" ORDER BY nombre ASC" ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query);
         
-        //Mostrar datos
+        //Mostrar resultados
         while (resultado.next()){
             if(tabla!="Producto"){
                 

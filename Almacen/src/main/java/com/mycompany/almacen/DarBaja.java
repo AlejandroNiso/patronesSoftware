@@ -12,15 +12,17 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase que se encarga de dar de baja objetos de la base de datos
+ * Los objetos pueden ser productos, clientes o proveedores
  * @author alexc
  */
 public class DarBaja extends javax.swing.JFrame {
     
-    
+    // Atributo de la clase
     private static String tabla;
     /**
-     * Creates new form NewJFrame
+     * Constructor de la clase DarBaja
+     * @param tabla -> tabla sobre la que se dará de baja el objeto
      */
     public DarBaja(String tabla) {
         initComponents();
@@ -124,6 +126,11 @@ public class DarBaja extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * En caso de que el campo del id haya sido rellenado, se procede a dar de baja sobre la 
+     * tabla correspondiente (Producto, Cliente o Proveedor) al pulsar el botón Dar de Baja
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty()){
@@ -141,6 +148,10 @@ public class DarBaja extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -192,19 +203,29 @@ public class DarBaja extends javax.swing.JFrame {
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Método para dar de baja sobre la tabla pasada como parámetro un id específico
+     * @param tabla -> tabla donde se da de baja una fila específica
+     * El valor que será eliminado de la base de datos será aquel id que esté contenido en el TextField
+     * en el momento de pulsar el botón
+     */ 
+    
     public void darDeBaja (String tabla) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
         
+        //Consulta que nos devuelve si hay algo con el mismo id para eliminar de la BD
         String query2 = " SELECT * FROM public.\"" + tabla+"\" WHERE  id" + tabla+ "=" + textField1.getText()  ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query2);
         
         
-        if (resultado.next()){
-            MenuPrincipal menu = new MenuPrincipal();
-            //Insertar el producto
+        if (resultado.next()){ //Existe un elemento con dicho id
+            //Eliminar el objeto
             String query = "DELETE FROM public.\""+tabla+"\" WHERE  id" + tabla+"=" +textField1.getText() ;
             bd.lanzarQuery(query);
+            
+            //Retornar al menu principal
+            MenuPrincipal menu = new MenuPrincipal();
             menu.setVisible(true);
             this.dispose();
         }

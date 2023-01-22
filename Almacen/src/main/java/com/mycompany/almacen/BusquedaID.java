@@ -12,13 +12,16 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Realiza la búsqueda en una determinada tabla de la base de datos por ID
  * @author alexc
  */
 public class BusquedaID extends javax.swing.JFrame implements EstrategiaBuscar{
+    
+    //Atributo de la clase
     private static String tabla;
     /**
-     * Creates new form BusquedaID
+     * Constructor de BusquedaID
+     * @param tabla -> tabla de la base de datos en la que realizar la búsqueda
      */
     public BusquedaID(String tabla) {
         initComponents();
@@ -129,6 +132,10 @@ public class BusquedaID extends javax.swing.JFrame implements EstrategiaBuscar{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -136,11 +143,15 @@ public class BusquedaID extends javax.swing.JFrame implements EstrategiaBuscar{
         this.dispose();
     }//GEN-LAST:event_button5ActionPerformed
 
+    /**
+     * En caso de que el campo del id por el que buscar halla sido rellenado,
+     * se realiza la búsqueda por este id
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty()){
             try {
-                System.out.println(tabla);
                 buscar(tabla,textField1.getText());
             } catch (SQLException ex) {
                 Logger.getLogger(BusquedaID.class.getName()).log(Level.SEVERE, null, ex);
@@ -193,13 +204,23 @@ public class BusquedaID extends javax.swing.JFrame implements EstrategiaBuscar{
     private java.awt.TextArea textArea2;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
+   
+    
+    /**
+     * Busqueda por id en una tabla de la BD
+     * @param tabla -> tabla de la BD en la que se realiza la búsqueda
+     * @param buscador -> ID a buscar
+     */
+    
     public void buscar (String tabla, String buscador) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
+        
+        //Consulta para buscar los datos con el id proporcionado
         String query = " SELECT * FROM public.\""+ tabla+"\" WHERE id" + tabla + "=" + buscador ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query);
         
-        //Mostrar datos
+        //Mostrar resultado por pantalla
         while (resultado.next()){
             if(tabla!="Producto"){
                 String salida = resultado.getInt(1) +" "+ resultado.getString(2)+" "+resultado.getString(3)+" "+resultado.getString(4)+" "+resultado.getString(5);

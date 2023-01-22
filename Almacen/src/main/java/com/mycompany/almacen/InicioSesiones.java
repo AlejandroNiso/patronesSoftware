@@ -12,13 +12,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase InicioSesiones que contiene la interfaz para el inicio de sesiones
+ * para los trabajadores del almacén.
  * @author alexc
  */
 public class InicioSesiones extends javax.swing.JFrame {
 
     /**
-     * Creates new form InicioSesiones
+     * Constructor de InicioSesiones
      */
     public InicioSesiones() {
         initComponents();
@@ -126,6 +127,11 @@ public class InicioSesiones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * En caso de que tanto el email como la contraseña sean no vacías, 
+     * al pulsar el botón Iniciar Sesión se trata de iniciar sesión en la aplicación.
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty() && !textField2.getText().isEmpty()){
@@ -191,17 +197,27 @@ public class InicioSesiones extends javax.swing.JFrame {
     private java.awt.TextField textField2;
     // End of variables declaration//GEN-END:variables
 
-public void validarInicioSesion(String email, String password) throws SQLException{
+    /**
+     * Método que valida el inicio de sesión del trabajador en la aplicación
+     * @param email -> email del trabajador.
+     * @param password -> contraseña del trabajador.
+     * En caso de que el email y la contraseña existan en el sistema y sean correctas,
+     * se inicia sesión mostrando en Menu Principal de la aplicación en el que se podrán
+     * realizar las diferentes gestiones del almacén.
+     */ 
+    
+    public void validarInicioSesion(String email, String password) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
         
+        //Consulta para seleccionar el usuario con el email pasado como parametro
         String query2 = " SELECT * FROM public.\"Usuario\" WHERE  email='" + email + "'" ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query2);
         
-        if (resultado.next()){
+        if (resultado.next()){ //Existe un usuario con dicho emial
             //Validar el inicio de sesion
-
             if ((resultado.getString(1)).contains(email) && (resultado.getString(2)).contains(password)){
+                //Mostrar el menú principal, el inicio de sesión es válido
                 MenuPrincipal menu = new MenuPrincipal();
                 menu.setVisible(true);
                 this.dispose();

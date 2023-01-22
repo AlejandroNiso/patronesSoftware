@@ -5,13 +5,14 @@
 package com.mycompany.almacen;
 
 /**
- *
+ * Clase Menu inicial que muestra la interfaz para iniciar sesión o registrarse
+ * para los empleados del almacén
  * @author alexc
  */
 public class MenuInicio extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuInicio
+     * Conctructor de MenuInicio
      */
     public MenuInicio() {
         initComponents();
@@ -85,6 +86,10 @@ public class MenuInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para ir a la interfaz de inicio de sesiones
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         InicioSesiones inicio = new InicioSesiones();
@@ -93,6 +98,10 @@ public class MenuInicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_button1ActionPerformed
 
+    /**
+     * Botón para proceder al registro de un nuevo usuario
+     */ 
+    
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
         Proxy proxy = new Proxy();

@@ -12,13 +12,13 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Esta clase se encarga de dar de alta Productos
  * @author alexc
  */
 public class AltaProducto extends javax.swing.JFrame {
 
     /**
-     * Creates new form AltaProducto
+     * Constructor de AlrtaProducto
      */
     public AltaProducto() {
         initComponents();
@@ -211,10 +211,19 @@ public class AltaProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
 
+    
+    /**
+     * En caso de que los tres primeros campos sean no vacíos, si se presiona el botón dar de alta
+     * se crea un tipo de Producto distinto en base a la elección del cuarto parámetro 
+     * (fragil, normal, inflamable o pesado)
+     * Además, lo inserta en la base de datos
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty() && !textField2.getText().isEmpty() && !textField3.getText().isEmpty()){
             Producto producto;
+            //creación del producto en fnción del item seleccionado
             if(choice2.getSelectedItem()=="Frágil"){
                  producto = darAltaProductoFragil (Integer.parseInt(textField1.getText()), textField2.getText(), Integer.parseInt(textField3.getText()), choice2.getSelectedItem());
             }
@@ -228,6 +237,7 @@ public class AltaProducto extends javax.swing.JFrame {
                 producto = darAltaProductoPesado (Integer.parseInt(textField1.getText()), textField2.getText(), Integer.parseInt(textField3.getText()), choice2.getSelectedItem());
             }
             try {
+                //Inserción del producto en la BD
                 insertarProducto(producto);
             } catch (SQLException ex) {
                 Logger.getLogger(AltaProducto.class.getName()).log(Level.SEVERE, null, ex);
@@ -240,6 +250,10 @@ public class AltaProducto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_button1ActionPerformed
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -302,35 +316,79 @@ public class AltaProducto extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
+    /**
+     * Creación de un Producto Pesado
+     * @param idProducto -> id del producto a crear
+     * @param nombre -> nombre del producto a crear
+     * @param precio -> precio del producto a crear
+     * @param descripcion -> descripcion del producto a crear
+     * @return ProductoPesado -> Producto creado
+     */
+    
     public ProductoPesado darAltaProductoPesado (int idProducto, String nombre, int precio, String descripcion){
         return new ProductoPesado (idProducto, nombre, precio, descripcion);
     }
+    
+    /**
+     * Creación de un Producto Fragil
+     * @param idProducto -> id del producto a crear
+     * @param nombre -> nombre del producto a crear
+     * @param precio -> precio del producto a crear
+     * @param descripcion -> descripcion del producto a crear
+     * @return ProductoFragil -> Producto creado
+     */
     
     public ProductoFragil darAltaProductoFragil (int idProducto, String nombre, int precio, String descripcion){
         return new ProductoFragil(idProducto, nombre, precio, descripcion);
     }
     
+    /**
+     * Creación de un Producto Normal
+     * @param idProducto -> id del producto a crear
+     * @param nombre -> nombre del producto a crear
+     * @param precio -> precio del producto a crear
+     * @param descripcion -> descripcion del producto a crear
+     * @return ProductoNormal -> Producto creado
+     */
+    
     public ProductoNormal darAltaProductoNormal (int idProducto, String nombre, int precio, String descripcion){
         return new ProductoNormal (idProducto, nombre, precio, descripcion);
     }
+    
+    /**
+     * Creación de un Producto Inflamable
+     * @param idProducto -> id del producto a crear
+     * @param nombre -> nombre del producto a crear
+     * @param precio -> precio del producto a crear
+     * @param descripcion -> descripcion del producto a crear
+     * @return ProductoInflamable -> Producto creado
+     */
     
     public ProductoInflamable darAltaProductoInflamable (int idProducto, String nombre, int precio, String descripcion){
         return new ProductoInflamable (idProducto, nombre, precio, descripcion);
     }
     
+    /**
+     * Inserta en la base de datos un producto determinado
+     * @param producto -> producto a insertar
+     */
+    
     public void insertarProducto (Producto producto) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
         
+        //Consulta para comprobar que no existe previamente un producto con el mismo id
         String query2 = " SELECT * FROM public.\"Producto\" WHERE  idproducto=" + producto.getIdProducto() ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query2);
         
-        if (resultado.next()==false){
-            MenuPrincipal menu = new MenuPrincipal();
+        if (resultado.next()==false){ //COmprobación de la unicidad del id
             //Insertar el producto
             String query = "INSERT INTO public.\"Producto\" (IdProducto, Nombre, Precio, Descripcion) VALUES ('" + producto.getIdProducto() + "',' " 
                 + producto.getNombre() +"','"+ producto.getPrecio() +"','" + producto.getDescripcion() +"')" ;
             bd.lanzarQuery(query);
+            
+            //Retornar al menú principal
+            MenuPrincipal menu = new MenuPrincipal();
             menu.setVisible(true);
             this.dispose();
         }

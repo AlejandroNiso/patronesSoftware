@@ -12,13 +12,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Proxy de Protección para registar usuarios
+ * Implementa la interfaz registroUsuario
  * @author alexc
  */
 public class Proxy extends javax.swing.JFrame implements RegistroUsuario {
 
     /**
-     * Creates new form Proxy
+     * Constructor de Proxy
      */
     public Proxy() {
         initComponents();
@@ -142,6 +143,11 @@ public class Proxy extends javax.swing.JFrame implements RegistroUsuario {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * En caso de pulsar el botón registrarse y que los campos estén completos, se 
+     * crea un Usuario y se inserta en la base de datos
+     */
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty() && !textField2.getText().isEmpty() && !textField3.getText().isEmpty()){
@@ -217,6 +223,12 @@ public class Proxy extends javax.swing.JFrame implements RegistroUsuario {
     // End of variables declaration//GEN-END:variables
 
 
+    /**
+     * Método para insrtar un determinado usuario en la BD
+     * @param usuario -> usuario que se quiere incluir en la base de datos
+     * @throws java.sql.SQLException
+     */
+    
     public void insertarUsuario(Usuario usuario) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
         

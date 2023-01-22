@@ -13,13 +13,13 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase MenuPedidos que contiene la interfaz para las posibles gestiones sobre los pedidos en el almacén.
  * @author alexc
  */
 public class MenuPedidos extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuPedidos
+     * Constructor de MenuPedidos
      */
     public MenuPedidos() {
         initComponents();
@@ -243,6 +243,11 @@ public class MenuPedidos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * En caso de pulsar el botón insertar y que todos los campos que aparecen por encima de él estén rellenos,
+     * se crea un nuevo Pedido y se inserta este en la BD
+     */
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty() && !textField2.getText().isEmpty() && !textField3.getText().isEmpty() && !textField4.getText().isEmpty() && !textField5.getText().isEmpty()){
@@ -264,6 +269,10 @@ public class MenuPedidos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_button1ActionPerformed
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button10ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -287,6 +296,11 @@ public class MenuPedidos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    /**
+     * En caso de que el campo id nos ea vacío y se pulse el boón Completar,
+     * se completa el pedido cuyo id es el valor del TextFiield id.
+     */ 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(!jTextField1.getText().isEmpty()){
@@ -362,33 +376,46 @@ public class MenuPedidos extends javax.swing.JFrame {
     private java.awt.TextField textField4;
     private java.awt.TextField textField5;
     // End of variables declaration//GEN-END:variables
+    
+    /**
+     * Método para insertar un pedido en la base de datos
+     * @param pedido -> pedido a insertar en la BD
+     */ 
+    
     public void insertarPedido (Pedido pedido) throws SQLException, IOException{
         BaseDatos bd = BaseDatos.getInstancia();
         
+        // Consulta para comprobar que el id del producto existe
         String query3 = " SELECT * FROM public.\"Producto\" WHERE  idproducto=" + pedido.getIdProducto() ;
         Statement consulta2 = bd.prepararConsulta();
         ResultSet resultado2 = bd.lanzarQuery(consulta2, query3);
         
+        // Consulta para comprobar que el id de la persona existe
         String query4 = " SELECT * FROM public.\"Cliente\" WHERE  idcliente=" + pedido.getIdPersona() ;
         Statement consulta3 = bd.prepararConsulta();
         ResultSet resultado3 = bd.lanzarQuery(consulta3, query4);
         
+        //Consulta para comprobar que el id del pedido no existe previamente en la BD
         String query5 = " SELECT * FROM public.\"Pedido\" WHERE  idpedido=" + pedido.getIdPedido() ;
         Statement consulta4 = bd.prepararConsulta();
         ResultSet resultado4 = bd.lanzarQuery(consulta4, query5);
         
-        if (resultado4.next()==false){
-            if(resultado2.next()){
-                if(resultado3.next()){
+        if (resultado4.next()==false){ //Comprobación de que el id del pedido es único
+            if(resultado2.next()){ //id del producto existe
+                if(resultado3.next()){ //id de la persona existe
+                    
+                    //Insertar el pedido en la BD
                     String query = "INSERT INTO public.\"Pedido\" (IdPedido, IdProducto, Cantidad, IdCliente, Fecha, Completado) VALUES ('" + pedido.getIdPedido() + "',' "
                             + pedido.getIdProducto() + "','" + pedido.getCantidad() + "','" + pedido.getIdPersona() + "','" + pedido.getFecha() + "','" + pedido.isCompletado() + "')";
                     bd.lanzarQuery(query);
                     
+                    //Guardar el pedido en el txt para tener un "backup"
                     Recuerdo recuerdo = new Recuerdo();
                     String nuevaLinea = "PEDIDO: " + pedido.getIdPedido() + ", " + pedido.getIdProducto() + ", " + pedido.getCantidad() 
                             + ", " + pedido.getIdPersona() + ", " + pedido.getFecha() ;
                     recuerdo.setRecuerdo(nuevaLinea);
                     
+                    //Retornar al menú principal
                     MenuPrincipal menu = new MenuPrincipal();
                     menu.setVisible(true);
                     this.dispose();
@@ -403,22 +430,34 @@ public class MenuPedidos extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Método para completar el pedido cuyo id se pasa como parámetro
+     * @param idPedido -> id del pedido que se desea completar
+     * @throws java.sql.SQLException
+     */ 
+    
     public void completarPedido (int idPedido) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
         
+        // Consulta para comprobar que el id del pedido ha sido registrado en la BD
         String query3 = " SELECT * FROM public.\"Pedido\" WHERE  idpedido=" + idPedido ;
         Statement consulta2 = bd.prepararConsulta();
         ResultSet resultado2 = bd.lanzarQuery(consulta2, query3);
-        if (resultado2.next()){
-            if (resultado2.getBoolean(5)==false){
+        
+        if (resultado2.next()){ //El id del pedido existe
+            
+            if (resultado2.getBoolean(5)==false){ //El pedido no está completado
+                
+                //Consulta para hallar cantidad actual del producto en el almacén.
                 String query2 = " SELECT cantidad FROM public.\"Existencias\" WHERE  idproducto=" + resultado2.getString(2);
                 Statement consulta = bd.prepararConsulta();
                 ResultSet resultado = bd.lanzarQuery(consulta, query2);
 
-                if (resultado.next()) {
+                if (resultado.next()) { //Hay existencias del producto en el almacén
+                    //Actualizar la cantidad
                     int cantidadActual = resultado.getInt(1);
                     int cantidadFinal = cantidadActual - Integer.parseInt(resultado2.getString(3));
-                    if (cantidadFinal >= 0) {
+                    if (cantidadFinal >= 0) {//Hay cantidad suficiente
                         //Eliminar unidades de existencias
                         String queryUpdate = "UPDATE public.\"Existencias\" SET cantidad = " + cantidadFinal + " WHERE idproducto = " + resultado2.getString(2);
                         bd.lanzarQuery(queryUpdate);
@@ -427,6 +466,7 @@ public class MenuPedidos extends javax.swing.JFrame {
                         String queryUpdate2 = "UPDATE public.\"Pedido\" SET completado = true WHERE idpedido = " + idPedido;
                         bd.lanzarQuery(queryUpdate2);
 
+                        //Retornar al menú principal
                         MenuPrincipal menu = new MenuPrincipal();
                         menu.setVisible(true);
                         this.dispose();

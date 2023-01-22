@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * Realiza la ordenación en una determinada tabla de la base de datos por ID
  * @author alexc
  */
 public class OrdenaID extends javax.swing.JFrame implements EstrategiaOrdenar {
@@ -17,7 +17,7 @@ public class OrdenaID extends javax.swing.JFrame implements EstrategiaOrdenar {
     
     private static String tabla;
     /**
-     * Creates new form OrdenaID
+     * Constructor de OrdenaID
      */
     public OrdenaID(String tabla) {
         initComponents();
@@ -90,6 +90,10 @@ public class OrdenaID extends javax.swing.JFrame implements EstrategiaOrdenar {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -139,14 +143,20 @@ public class OrdenaID extends javax.swing.JFrame implements EstrategiaOrdenar {
     private java.awt.TextArea textArea2;
     // End of variables declaration//GEN-END:variables
     
+    /**
+     * Método para realizar la ordenación de una determinada tabla de la base de datos por ID
+     * @param tabla -> tabla a ordenar
+     */ 
     
     public void ordenar(String tabla) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
+        
+        //Consulta que retorna todos los elementos de la tabla pasada como parámetro en orden ascendente
         String query = "SELECT * FROM public.\""+ tabla+"\" ORDER BY id" + tabla + " ASC" ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query);
         
-        //Mostrar datos
+        //Mostrar resultado
         while (resultado.next()){
             if(tabla!="Producto"){
                 

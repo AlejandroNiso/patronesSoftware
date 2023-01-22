@@ -5,13 +5,14 @@
 package com.mycompany.almacen;
 
 /**
- *
+ * Menu principal de la ap`licación que contiene botonoes para redireccionarse a los menús
+ * de gestión de: Clientes, Proveedores, Productos, Entradas y Pedidos
  * @author alexc
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuPrincipal
+     * Constructor de MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
@@ -144,6 +145,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para mostrar el menu de gestión de Clientes
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         MenuClientes menu = new MenuClientes();
@@ -151,6 +156,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
 
+    /**
+     * Botón para mostrar el menu de gestión de Proveedores
+     */ 
+    
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
         MenuProveedores menu = new MenuProveedores();
@@ -158,6 +167,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button2ActionPerformed
 
+    /**
+     * Botón para mostrar el menu de gestión de CProductos
+     */ 
+    
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
         MenuProductos menu = new MenuProductos();
@@ -165,6 +178,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button3ActionPerformed
 
+    /**
+     * Botón para mostrar el menu de gestión de Entradas
+     */ 
+    
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
         // TODO add your handling code here:
         MenuEntradas menu = new MenuEntradas();
@@ -172,6 +189,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button4ActionPerformed
 
+    /**
+     * Botón para mostrar el menu de gestión de Pedidos
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPedidos menu = new MenuPedidos();

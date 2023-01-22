@@ -4,38 +4,33 @@
  */
 package com.mycompany.almacen;
 
-/**
- *
- * @author maria
- */
-
 import java.sql.*;
 
 /**
- * Provee de una pasarela de interacción con la base de datos de derby.
- * Es un objeto singleton. 
- * @author marco
+ * Clase que contiene la interacción con la base de datos PostgreSQL
+ * @author maria
  */
+
 public class BaseDatos {
 
-    // Instancia única de la clase GestorBaseDatos
+    // Instancia única de BaseDatos
     private static BaseDatos instanciaUnica = null;
     
     
-    // Atributos de la clase
-    private Connection conexion;
+    // Atributos
     private Statement consulta;
     private ResultSet resultado;
+    private Connection conexion;
     
     /**
-     * Constructor privado
+     * Constructor privado para asegurar que la instancia sea única
      */
     private BaseDatos() {
         abrirConexion();
     }
 
     /**
-     * Abre la conexión con la base de datos.
+     * Abre la conexión con la BD.
      */
     private void abrirConexion() {
         try {
@@ -47,8 +42,8 @@ public class BaseDatos {
     }
     
     /**
-     * Prepara una consulta sobre la base de datos. Usado
-     * Para querys que devuelven resultados.
+     * Prepara una consulta sobre la BD. 
+     * Es necesario para las consultas que devuelven resultados 
      * @return -> objeto consulta. 
      */
     public Statement prepararConsulta() {
@@ -56,7 +51,6 @@ public class BaseDatos {
         try {
             consultaPreparada = conexion.createStatement();
         } catch (Exception e) {
-            System.out.println("Error lanzando consulta: ");
             e.printStackTrace();
         }
         return consultaPreparada;
@@ -64,8 +58,7 @@ public class BaseDatos {
     }
 
     /**
-     * Lanza la query dada sobre la base de datos.
-     * Es una query de update, no devuelve resultados.
+     * Lanza la consulta en la BD.
      * @param query -> query a lanzar. 
      */
     public void lanzarQuery(String query) {
@@ -75,18 +68,15 @@ public class BaseDatos {
             consulta.close();
 
         } catch (Exception e) {
-            System.out.println("Error al lanzar query: ");
-            System.out.println("Query: " + query);
             e.printStackTrace();
         }
     }
 
     /**
-     * Lanza una query sobre la BBDD que devuelve un resultado
-     * en el resultSet. 
+     * Lanza una consulta en la BD que devuelve un resultado
      * @param consulta -> consulta preparada. 
      * @param query -> query a lanzar. 
-     * @return 
+     * @return resultSet -> resultado de la ejecución de la consulta
      */
     public ResultSet lanzarQuery(Statement consulta, String query) {
         try {
@@ -94,8 +84,6 @@ public class BaseDatos {
             resultado = consulta.executeQuery(query);
 
         } catch (Exception e) {
-            System.out.println("Error al lanzar query: ");
-            System.out.println("Query: " + query);
             e.printStackTrace();
         }
         return resultado;
@@ -103,10 +91,8 @@ public class BaseDatos {
 
 
     /**
-     * *
-     * Método estático desde el que devolvemos el objeto Singleton
-     *
-     * @return devuelve la instacia única de la clase
+     * Devolver el objeto Singleton
+     * @return Instacia única de la clase
      */
     public static BaseDatos getInstancia() {
         try {
@@ -125,7 +111,7 @@ public class BaseDatos {
     
 
     /**
-     * Cierra la conexión con la base de datos
+     * Cerrar la conexión 
      */
     public void cerrarConexion() {
         try {

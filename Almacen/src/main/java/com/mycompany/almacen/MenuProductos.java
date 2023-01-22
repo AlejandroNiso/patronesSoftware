@@ -9,13 +9,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase MenuProductos que contiene la interfaz para las posibles gestiones sobre los productos
  * @author alexc
  */
 public class MenuProductos extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuProductos
+     * Constructor de MenuProductos
      */
     public MenuProductos() {
         initComponents();
@@ -159,6 +159,10 @@ public class MenuProductos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Al pulsar el botón Dar de Alta, se redirige al usuario a la interfaz dar de alta producto
+     */
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         AltaProducto alta = new AltaProducto();
@@ -166,6 +170,10 @@ public class MenuProductos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
 
+    /**
+     * Al pulsar el botón Dar de Baja, se redirige al usuario a la interfaz dar de baja
+     */
+    
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
         DarBaja baja = new DarBaja("Producto");
@@ -173,6 +181,12 @@ public class MenuProductos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button2ActionPerformed
 
+    /**
+     * Al pulsar el botón Ordenar, se redirige al usuario a la interfaz de ordenar
+     * En caso de que se haya seleccionado id, se ordena por id la tabla Cliente de la BD
+     * En caso contrario, se habrá seleccionado Nombre por lo que se ordenará por nombre la tabla Cliente de la BD
+     */
+    
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
         if(choice1.getSelectedItem()=="Id"){
@@ -197,6 +211,12 @@ public class MenuProductos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_button3ActionPerformed
 
+    /**
+     * Al pulsar el botón Buscar, se redirige al usuario a la interfaz de búsqueda
+     * En caso de que se haya seleccionado id, se buscará por id la tabla Producto de la BD
+     * En caso contrario, se habrá seleccionado Nombre por lo que se buscará por nombre la tabla Producto de la BD
+     */
+    
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
         // TODO add your handling code here:
         if(choice2.getSelectedItem()=="Id"){
@@ -212,6 +232,10 @@ public class MenuProductos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_button4ActionPerformed
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();

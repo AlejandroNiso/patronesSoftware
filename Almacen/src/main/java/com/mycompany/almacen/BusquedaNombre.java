@@ -12,14 +12,16 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Realiza la búsqueda en una determinada tabla de la base de datos por nombre
  * @author alexc
  */
 public class BusquedaNombre extends javax.swing.JFrame implements EstrategiaBuscar {
 
+    //Atributo de la clase
     private static String tabla;
     /**
-     * Creates new form BusquedaNombre
+     * Constructor de BusquedaNombre
+     * @param tabla -> tabla de la base de datos en la que realizar la búsqueda
      */
     public BusquedaNombre(String tabla) {
         initComponents();
@@ -129,6 +131,10 @@ public class BusquedaNombre extends javax.swing.JFrame implements EstrategiaBusc
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -136,6 +142,11 @@ public class BusquedaNombre extends javax.swing.JFrame implements EstrategiaBusc
         this.dispose();
     }//GEN-LAST:event_button5ActionPerformed
 
+    /**
+     * En caso de que el campo del nombre por el que buscar halla sido rellenado,
+     * se realiza la búsqueda por este nombre
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty()){
@@ -193,13 +204,21 @@ public class BusquedaNombre extends javax.swing.JFrame implements EstrategiaBusc
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 
-public void buscar (String tabla, String buscador) throws SQLException{
+    /**
+     * Busqueda por nombre en una tabla de la BD
+     * @param tabla -> tabla de la BD en la que se realiza la búsqueda
+     * @param buscador -> nombre a buscar
+     */
+    
+    public void buscar (String tabla, String buscador) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
+        
+        //Consulta para buscar los datos con el nombre proporcionado
         String query = " SELECT * FROM public.\""+ tabla+"\" WHERE nombre LIKE '%" + buscador +"%'" ;
         Statement consulta = bd.prepararConsulta();
         ResultSet resultado = bd.lanzarQuery(consulta, query);
         
-        //Mostrar datos
+        //Mostrar resultado por pantalla
         while (resultado.next()){
             if(tabla!="Producto"){
                 String salida = resultado.getInt(1) +" "+ resultado.getString(2)+" "+resultado.getString(3)+" "+resultado.getString(4)+" "+resultado.getString(5);

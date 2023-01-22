@@ -7,14 +7,15 @@ package com.mycompany.almacen;
 import java.sql.SQLException;
 
 /**
- *
+ * Interfaz EstrategiaOrdenar que deben implementar los diferentes métodos de 
+ * ordenación sobre la base de datos
  * @author maria
  */
 public interface EstrategiaOrdenar{
 
     /**
-     *
-     * @param tabla
+     * Declaración del método ordenar que deben implementar todas las clases que extiendan de esta interfaz
+     * @param tabla -> tabla sobre la que se va a realizar la ordenación
      * @throws SQLException
      */
     public void ordenar (String tabla) throws SQLException;

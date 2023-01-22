@@ -9,20 +9,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase MenuEntradas que contiene la interfaz para las posibles gestiones sobre las entradas en el almacén.
  * @author alexc
  */
 public class MenuEntradas extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuEntradas
+     * Constructor de MenuEntradas
      */
     public MenuEntradas() {
         initComponents();
@@ -191,6 +188,10 @@ public class MenuEntradas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button10ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -202,6 +203,11 @@ public class MenuEntradas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField4ActionPerformed
 
+    /**
+     * En caso de que todos los campos estén rellenados, al pulsar el botón Insertar,
+     * se genera una entrada y se inserta esta en la BD
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty() && !textField2.getText().isEmpty() && !textField3.getText().isEmpty() && !textField4.getText().isEmpty() && !textField5.getText().isEmpty()){
@@ -275,34 +281,47 @@ public class MenuEntradas extends javax.swing.JFrame {
     private java.awt.TextField textField5;
     // End of variables declaration//GEN-END:variables
 
-public void insertarEntrada (Entrada entrada) throws SQLException, IOException{
-        BaseDatos bd = BaseDatos.getInstancia();   
+    /**
+     * Método para insertar una determinada entrada en la base de datos
+     * @param entrada -> entrada a insertar en la BD
+     */ 
+    
+    public void insertarEntrada (Entrada entrada) throws SQLException, IOException{
+        BaseDatos bd = BaseDatos.getInstancia();  
+        
+        //Consulta para comprobar que exista el producto en la base de datos
         String query3 = " SELECT * FROM public.\"Producto\" WHERE  idproducto=" + entrada.getIdProducto() ;
         Statement consulta2 = bd.prepararConsulta();
         ResultSet resultado2 = bd.lanzarQuery(consulta2, query3);
         
+        //Consulta para la comprobación de que exista la persona en la BD
         String query4 = " SELECT * FROM public.\"Proveedor\" WHERE  idproveedor=" + entrada.getIdPersona() ;
         Statement consulta3 = bd.prepararConsulta();
         ResultSet resultado3 = bd.lanzarQuery(consulta3, query4);
         
+        //Consulta para comprobar que el id de la entrada no exista previamente en la BD
         String query5 = " SELECT * FROM public.\"Entrada\" WHERE  identrada=" + entrada.getIdEntrada() ;
         Statement consulta4 = bd.prepararConsulta();
         ResultSet resultado4 = bd.lanzarQuery(consulta4, query5);
+        
+        
         //Registrar entrada
-        if(resultado4.next()==false){
-            if (resultado2.next()) {
-                if (resultado3.next()) {
+        if(resultado4.next()==false){ //Comprobar id entrada único
+            if (resultado2.next()) { //Comprobar que existe el producto
+                if (resultado3.next()) { //Comprobar que existe la persona
+                    
+                    //Insertar entrada en BD
                     String query = "INSERT INTO public.\"Entrada\" (IdEntrada, IdProducto, Cantidad, IdProveedor, Fecha) VALUES ('" + entrada.getIdEntrada() + "',' "
                             + entrada.getIdProducto() + "','" + entrada.getCantidad() + "','" + entrada.getIdPersona() + "','" + entrada.getFecha() + "')";
                     bd.lanzarQuery(query);
 
-                    //Actualizar o insertar en la base de datos existencias
+                    //Consulta para actualizar o insertar en la base de datos existencias
                     String query2 = " SELECT cantidad FROM public.\"Existencias\" WHERE  idproducto=" + entrada.getIdProducto();
                     Statement consulta = bd.prepararConsulta();
                     ResultSet resultado = bd.lanzarQuery(consulta, query2);
 
                     if (resultado.next()) {
-                        //Actualizar
+                        //Actualizar existencias
                         int cantidadActual = resultado.getInt(1);
                         int cantidadFinal = cantidadActual + entrada.getCantidad();
                         String queryUpdate = "UPDATE public.\"Existencias\" SET cantidad = " + cantidadFinal + " WHERE idproducto = " + entrada.getIdProducto();
@@ -313,12 +332,13 @@ public void insertarEntrada (Entrada entrada) throws SQLException, IOException{
                         bd.lanzarQuery(queryInsert);
                     }
                     
+                    //Insertar un Recuerdo para tener "backup" en el txt
                     Recuerdo recuerdo = new Recuerdo();
                     String nuevaLinea = "ENTRADA: " + entrada.getIdEntrada() + ", " + entrada.getIdProducto() + ", " + entrada.getCantidad() 
                             + ", " + entrada.getIdPersona() + ", " + entrada.getFecha() ;
                     recuerdo.setRecuerdo(nuevaLinea);
                     
-                    
+                    //Retornar al menú principal
                     MenuPrincipal menu = new MenuPrincipal();
                     menu.setVisible(true);
                     this.dispose();

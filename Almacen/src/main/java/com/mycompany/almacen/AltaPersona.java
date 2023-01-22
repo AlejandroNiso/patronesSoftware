@@ -4,21 +4,21 @@
  */
 package com.mycompany.almacen;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Esta clase se encarga de dar de alta a Personas (tanto clientes como proveedores)
  * @author alexc
  */
 public class AltaPersona extends javax.swing.JFrame {
     
-   private static int tipoPersona;
+    //Atributo de la clase
+    private static int tipoPersona;
+    
     /**
-     * Creates new form AltaPersona
+     * Constructor de la clase
      */
     public AltaPersona(int tipo) {
         initComponents();
@@ -199,6 +199,11 @@ public class AltaPersona extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField2ActionPerformed
 
+   /**
+     * Llama al método crear persona con los valores de los TextField de la interfaz
+     * cuando se presiona el botón Dar de Alta y todos los campos están completos
+     */ 
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         if(!textField1.getText().isEmpty() && !textField2.getText().isEmpty() && !textField3.getText().isEmpty() && !textField4.getText().isEmpty() && !textField5.getText().isEmpty()){
@@ -210,6 +215,10 @@ public class AltaPersona extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_button1ActionPerformed
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();
@@ -268,7 +277,16 @@ public class AltaPersona extends javax.swing.JFrame {
     private java.awt.TextField textField5;
     // End of variables declaration//GEN-END:variables
 
-
+/**
+     * Creación de una Persona (cliente o proveedor) en función del tipo pasado como parámetro
+     * @param idPersona -> id de la persona a crear
+     * @param nombre -> nombre de la persona a crear
+     * @param email -> email de la persona a crear
+     * @param telefono -> telefono de la persona a crear
+     * @param direccion -> direccion de la persona a crear
+     * @param tipo -> tipo de la persona a crear. Si es un 0 se trata de un cliente, en caso contrario, de un proveedor
+     * @return Persona -> Persona creada
+     */
 public Persona crearPersona (int idPersona, String nombre, String email, String telefono, String direccion, int tipo) throws SQLException{
         if (tipo == 0){
             //Creación de un Cliente
@@ -280,9 +298,5 @@ public Persona crearPersona (int idPersona, String nombre, String email, String 
             return new Proveedor (idPersona, nombre, email, telefono, direccion);
         }
     }
-    
-    
-    
-    
 
 }

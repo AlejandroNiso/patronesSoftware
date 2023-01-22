@@ -9,15 +9,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase MenuClientes que contiene la interfaz para las posibles gestiones sobre los clientes
+ * del almacén.
  * @author alexc
  */
 public class MenuClientes extends javax.swing.JFrame {
     
+    // Atributo de la clase, el tipo de Persona, que es 0 al tratarse de un cliente
     private int tipo = 0;
 
     /**
-     * Creates new form MenuClientes
+     * Constructor de MenuClientes
      */
     public MenuClientes() {
         initComponents();
@@ -159,6 +161,10 @@ public class MenuClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Al pulsar el botón Dar de Alta, se redirige al usuario a la interfaz dar de alta
+     */
+    
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         AltaPersona alta=new AltaPersona(tipo);
@@ -166,6 +172,10 @@ public class MenuClientes extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
 
+    /**
+     * Al pulsar el botón Dar de Baja, se redirige al usuario a la interfaz dar de baja
+     */
+    
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
         DarBaja baja = new DarBaja("Cliente");
@@ -174,6 +184,12 @@ public class MenuClientes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_button2ActionPerformed
 
+    /**
+     * Al pulsar el botón Ordenar, se redirige al usuario a la interfaz de ordenar
+     * En caso de que se haya seleccionado id, se ordena por id la tabla Cliente de la BD
+     * En caso contrario, se habrá seleccionado Nombre por lo que se ordenará por nombre la tabla Cliente de la BD
+     */
+    
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
         if(choice1.getSelectedItem()=="Id"){
@@ -199,6 +215,12 @@ public class MenuClientes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_button3ActionPerformed
 
+    /**
+     * Al pulsar el botón Buscar, se redirige al usuario a la interfaz de búsqueda
+     * En caso de que se haya seleccionado id, se buscará por id la tabla Cliente de la BD
+     * En caso contrario, se habrá seleccionado Nombre por lo que se buscará por nombre la tabla Cliente de la BD
+     */
+    
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
         // TODO add your handling code here:
         if(choice2.getSelectedItem()=="Id"){
@@ -215,6 +237,10 @@ public class MenuClientes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_button4ActionPerformed
 
+    /**
+     * Botón para retornar al menú principal
+     */ 
+    
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
         MenuPrincipal menu =new MenuPrincipal();

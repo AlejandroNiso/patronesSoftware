@@ -9,15 +9,31 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * Clase Cliente que representa un cliente en el almacén.
+ * Extiende de la clase Persona.
  * @author maria
  */
 public class Cliente extends Persona{
+    
+    /**
+     * Constructor de la clase Cliente
+     * @param idPersona -> id del cliente a construir
+     * @param nombre -> nombre del cliente a construir
+     * @param email -> email del cliente a construir
+     * @param telefono -> telefono del cliente a construir
+     * @param direccion -> direccion del cliente a construir
+     */
     
     public Cliente(int idPersona, String nombre, String email, String telefono, String direccion) throws SQLException {
         super(idPersona,nombre,email,telefono,direccion);   
         insertarCliente(this);
     }
+    
+    /**
+     * Inserta en la base de datos un cliente determinado
+     * @param cliente -> cliente a insertar
+     */
+    
     public void insertarCliente (Cliente cliente) throws SQLException{
         BaseDatos bd = BaseDatos.getInstancia();
         
